@@ -1,4 +1,4 @@
-when we browse in the net, we might have realised that there's a lot of websites out there that carry a whole bunch
+when we browse on the net, we might have realised that there's a lot of websites out there that carry a whole bunch
 of data. Such as :
         next week's weather predictions at weather forecast app/ website.
         current market value of various cryptocurrencies at Coinbase website.

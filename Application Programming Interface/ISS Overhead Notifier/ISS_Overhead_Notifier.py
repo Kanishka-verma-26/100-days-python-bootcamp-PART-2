@@ -1,15 +1,6 @@
 """ ISS OVERHEAD NOTIFIER API FOR A GIVEN LATITUDE AND LONGITUDE """
 import time
 
-""" Parameters : 
-        * lat (float): Latitude in decimal degrees. Required.
-        * lng (float): Longitude in decimal degrees. Required.
-        * date (string): Date in YYYY-MM-DD format. Also accepts other date formats and even relative date formats. 
-            If not present, date defaults to current date. Optional.
-        * callback (string): Callback function name for JSONP response. Optional.
-        * formatted (integer): 0 or 1 (1 is default). Time values in response will be expressed following ISO 8601 and
-            day_length will be expressed in seconds. Optional."""
-
 import requests
 import datetime
 import smtplib
@@ -33,6 +24,15 @@ def is_iss_overhead():
         return True
 
 def is_night():
+
+    """ Parameters :
+            * lat (float): Latitude in decimal degrees. Required.
+            * lng (float): Longitude in decimal degrees. Required.
+            * date (string): Date in YYYY-MM-DD format. Also accepts other date formats and even relative date formats.
+                If not present, date defaults to current date. Optional.
+            * callback (string): Callback function name for JSONP response. Optional.
+            * formatted (integer): 0 or 1 (1 is default). Time values in response will be expressed following ISO 8601 and
+                day_length will be expressed in seconds. Optional."""
 
     my_parameters = {
         "lat" : MY_LAT,

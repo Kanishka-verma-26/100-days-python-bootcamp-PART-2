@@ -5,7 +5,7 @@ import datetime
 my_email = "khashstudioz@gmail.com"
 password = "Hash@123"
 
-week_days = ['Monday',"Tuesday", "Wednesday","Thrusday", "Friday","Saturday", "Sunday"]
+week_days = ['Monday',"Tuesday", "Wednesday","Thursday", "Friday","Saturday", "Sunday"]
 
 now = datetime.datetime.now()
 # print(now.day)
@@ -14,7 +14,7 @@ now = datetime.datetime.now()
 day = week_days[now.weekday()]
 
 with open("quotes.txt") as quote_file:
-    all_quotes = quote_file.readlines()
+    all_quotes = quote_file.readlines()         #Return all lines in the file, as a list where each line is an item in the list object
     quote = random.choice(all_quotes)
 print(quote)
 
