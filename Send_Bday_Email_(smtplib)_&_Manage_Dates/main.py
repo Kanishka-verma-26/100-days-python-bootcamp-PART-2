@@ -32,7 +32,7 @@ if today_tuple in bday_dict:
         contents = contents.replace("[NAME]", bday_person["name"])
 
 
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+    with smtplib.SMTP("smtp.gmail.com", 587) as connection:                     # 587 is default mail submission port
         connection.starttls()                       # securing our connection
         connection.login(user=my_email, password=password)
         connection.sendmail(
@@ -45,8 +45,8 @@ if today_tuple in bday_dict:
 
 
 """ To run this code everyday :
-    signup on 'pythonanywhere.com' > files > upload files > consoles > Bash > Type 'python3 main.py' > 
-    (now schedule a task to run it everyday) Tasks > schedule your time according to UTC and type same command (python3 main.py) 
+    signup on 'pythonanywhere.com' > files > upload files > consoles > Bash > Type 'python3 rain_alert.py' > 
+    (now schedule a task to run it everyday) Tasks > schedule your time according to UTC and type same command (python3 rain_alert.py) 
     at UTC section """
 
 """ Note : now this code will run everyday at your selected time """

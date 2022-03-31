@@ -62,4 +62,5 @@ you can summarise these status codes just by looking at the first number :
 
 
 
+***__(Note: next directory is Keys, Authentication, Environment Variables and Sending SMSs)__***
 

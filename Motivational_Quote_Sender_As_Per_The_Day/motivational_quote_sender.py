@@ -18,7 +18,7 @@ with open("quotes.txt") as quote_file:
     quote = random.choice(all_quotes)
 print(quote)
 
-with smtplib.SMTP("smtp.gmail.com", 587) as connection:
+with smtplib.SMTP("smtp.gmail.com", 587) as connection:                 # 587 is default mail submission port
     connection.starttls()                       # securing our connection
     connection.login(user=my_email, password=password)
     connection.sendmail(
