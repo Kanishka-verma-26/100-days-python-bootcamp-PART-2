@@ -1,13 +1,27 @@
 """ ISS OVERHEAD NOTIFIER API FOR A GIVEN LATITUDE AND LONGITUDE """
 import time
+from geopy.geocoders import Nominatim
 
 import requests
 import datetime
 import smtplib
 
 
-MY_LAT = 36.7201600
-MY_LONG = -4.4203400
+""" fetching location """
+loc = Nominatim(user_agent="GetLoc")
+getLoc = loc.geocode("Noida Uttar Pradesh")
+
+# printing address
+print(getLoc.address)
+
+# printing latitude and longitude
+print("Latitude = ", getLoc.latitude, "\n")
+print("Longitude = ", getLoc.longitude)
+
+
+
+MY_LAT = getLoc.latitude
+MY_LONG = getLoc.longitude
 
 def is_iss_overhead():
 
@@ -53,6 +67,7 @@ def is_night():
 
 while True:
     time.sleep(100)
+    print("running")
     if is_iss_overhead() and is_night():
         my_email = "khashstudioz@gmail.com"
         password = "Hash@123"
