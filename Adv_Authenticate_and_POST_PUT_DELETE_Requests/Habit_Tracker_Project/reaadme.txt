@@ -1,0 +1,22 @@
+using an API called "Pixela", it allows you to track your habits but not just show which days you've done your habit, or which day you haven't; but it also shows the intensity.
+
+                    * GET : get piece of data from somebody else like API provider
+
+                    * POST : we give an external system some piece of data eg: saving data in google sheets
+
+                    * PUT : you update piece of data in external service
+
+                    * DELETE : you delete the piece of data in external service
+
+
+*** PIXELA
+
+            * create your account
+                    $ curl -X POST https://pixe.la/v1/users -d '{"token":"thisissecret", "username":"a-know", "agreeTermsOfService":"yes", "notMinor":"yes"}'
+                    {"message":"Success.","isSuccess":true}
+
+            * Create a graph definition
+                    $ curl -X POST https://pixe.la/v1/users/a-know/graphs -H 'X-USER-TOKEN:thisissecret' -d '{"id":"test-graph","name":"graph-name","unit":"commit","type":"int","color":"shibafu"}'
+                    {"message":"Success.","isSuccess":true}
+
+            * Get the graph!

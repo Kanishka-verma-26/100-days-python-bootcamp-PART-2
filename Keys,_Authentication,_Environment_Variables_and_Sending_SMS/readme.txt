@@ -75,7 +75,7 @@
          as we are using pythonanywhere as free account i.e. a proxy server the twilio API client needs to be told how to connect
          to the proxy server that free accounts use to access the external internet.
 
-                we need to change our code to :
+                we need to make changes in your code at pythonanywhere to run daily:
                     """
                         import os
                         from twilio.rest import Client
@@ -92,7 +92,10 @@
                         # twilio api calls will now work from behind the proxy:
                         message = client.messages.create(to="...", from_='...', body='...')
                         """
-         * re upload your file after deleting > consoles > Bash > Type 'python3 rain_alert.py'
+
+        *** ( Note: do not aopply above changes in your python script else it wont run in your console, to maintain running running of code on both platforms, make changes in your python anywhere code only. )
+
+         * save code > rerun Type 'python3 rain_alert.py'
          * (now schedule a task to run it everyday) Tasks > schedule your time according to UTC and type same command (python3 rain_alert.py) at UTC section
 
 
@@ -132,6 +135,31 @@
 
         (Note : always secure your API key and Auth Token )
 
-        * create Environment Variable
+        * create temporary Environment Variable till shell runs
 
-                "export <variable_name>=<variable_value>"      # no space
+                "export <variable_name>=<variable_value>"      # no space and quotation
+
+        * create Permanent ENV Variable Key
+
+                -> pip install python-decouple
+                -> touch .env   # create a new .env file
+                -> nano .env    # open the .env file in the nano text editor
+                -> add your environment variables like this:
+                        USER=alex
+                        KEY=hfy92kadHgkk29fahjsu3j922v9sjwaucahf
+                        (Then save (WriteOut) the file and exit nano. Your environment variables are now stored in your .env file.)
+
+                -> access env variables in your python code like:
+                        from decouple import config
+
+                        API_USERNAME = config('USER')
+                        API_KEY = config('KEY')
+
+
+
+
+        * fetch Environment Variable
+
+                 os.environ.get('<variable_you_want_to_fetch>') or os.getenv('<variable_you_want_to_fetch>') in python anywhere
+                                    and
+                 config('<variable_you_want_to_fetch>') in pycharm

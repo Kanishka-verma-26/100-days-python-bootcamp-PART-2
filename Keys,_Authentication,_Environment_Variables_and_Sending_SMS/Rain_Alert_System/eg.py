@@ -1,13 +1,12 @@
 """ This project will check the weather forecast of next 12 hours and send you a message at every 7 am that
  whether you should carry your umbrella to your work or not """
-import os
-from decouple import config
-
 
 """ sending sms """
+# import os
 from geopy.geocoders import Nominatim
 from twilio.rest import Client
 import requests
+# from twilio.http.http_client import TwilioHttpClient
 
 
 
@@ -18,17 +17,14 @@ getLoc = loc.geocode("Noida Uttar Pradesh")
 Latitude = getLoc.latitude
 Longitude = getLoc.longitude
 
-# print('MY_API_KEY' in os.environ)
-
-api_key = config('MY_API')
 
 
-# api_key="c255a84019eba778cdde4c13119b68d6"
+# api_key = os.environ.get("MY_API_KEY")
+api_key = "c255a84019eba778cdde4c13119b68d6"
 
+print(api_key)
 account_sid = "AC0c7ee8fc151cee3407dcfae02ebcf0e7"
-
-auth_token = config('AUTH_KEY')
-# auth_token = "a05f390d8ff67a24a0a3614fc6666d12"
+auth_token = "a05f390d8ff67a24a0a3614fc6666d12"
 
 """ The One Call API 1.0 provides the following weather data for any geographical coordinates:
 
@@ -43,7 +39,7 @@ auth_token = config('AUTH_KEY')
 weather_params = {
     "lat": Latitude,
     "lon": Longitude,
-    "appid": api_key,#config('MY_API')
+    "appid": api_key,
     "exclude": "current,minutely,daily",  # excluding the hourly, daily, and minutely weather report
 }
 
@@ -107,7 +103,7 @@ will_rain = False
 
 for i in range(12):
     condition_code = weather_data["hourly"][i]["weather"][0]["id"]  # return id
-    if int(condition_code) < 700:
+    if int(condition_code) > 700:
         will_rain = True
 
 if will_rain:
@@ -118,7 +114,10 @@ if will_rain:
         .create(
         body="It's going to rain today. Don't forget to carry your umbrella ☂.",
         from_='+15716006490',           # number from twilio
-        to='+159890237728'              # this has to be the phone number that you used to sign up to twilio or you can send messages and make calls to verified numbers and you can add more verified numbers
+        to='+918800868544'              # this has to be the phone number that you used to sign up to twilio or you can send messages and make calls to verified numbers and you can add more verified numbers
     )
 
     print(message.status)
+
+
+
